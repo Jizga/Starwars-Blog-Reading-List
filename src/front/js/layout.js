@@ -6,7 +6,7 @@ import { Home } from "./pages/home";
 import { Character } from "./pages/Character";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { MyNavbar } from "./component/MyNavbar";
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -18,7 +18,7 @@ const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
-				<Navbar />
+				<MyNavbar />
 				<Switch>
 					<Route exact path="/">
 						<Home />

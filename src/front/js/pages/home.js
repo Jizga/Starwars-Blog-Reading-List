@@ -12,7 +12,10 @@ export const Home = () => {
 		<div className="container text-center mt-5">
 			{/* <div className="alert alert-info">{store.dataPeople || "Loading data ..."}</div> */}
 
-			<Characters />
+			<div className="mt-5">
+				<h3 className="text-white text-left mb-4">Characters</h3>
+				<Characters />
+			</div>
 		</div>
 	);
 };
