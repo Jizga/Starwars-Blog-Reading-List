@@ -1,6 +1,7 @@
 import React from "react";
 
 export function Character() {
+	// Este componente necesita el id del personaje seleccionado
 	return (
 		<div className="container">
 			<div className="row">

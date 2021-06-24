@@ -1,46 +1,107 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	// let category;
+	// const url = `https://www.swapi.tech/api/${category}`;
+
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			dataPeople: [],
+			dataPlanets: [],
+			dataSpecies: [],
+			dataStarships: [],
+			dataVehicles: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getDataPeople: async () => {
+				// category='people'
+
+				try {
+					let response = await fetch("https://www.swapi.tech/api/people");
+
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					} else {
+						const data = await response.json();
+
+						const data_People = data.results;
+
+						setStore({ dataPeople: data_People });
+					}
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
 			},
 
-			getMessage: () => {
-				// fetching data from the backend
-				// fetch(process.env.BACKEND_URL + "/api/hello")
-				// 	.then(resp => resp.json())
-				// 	.then(data => setStore({ message: data.message }))
-				// 	.catch(error => console.log("Error loading message from backend", error));
+			getDataPlanets: async () => {
+				try {
+					// category='planets'
+
+					let response = await fetch("https://www.swapi.tech/api/planets");
+
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					} else {
+						const data = await response.json();
+
+						const data_Planets = data.results;
+
+						setStore({ dataPlanets: data_Planets });
+					}
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			getDataSpecies: async () => {
+				try {
+					// category = "species";
+					let response = await fetch("https://www.swapi.tech/api/species");
 
-				//reset the global store
-				setStore({ demo: demo });
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					} else {
+						const data = await response.json();
+
+						const data_Species = data.results;
+
+						setStore({ dataSpecies: data_Species });
+					}
+				} catch (error) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
+
+			getDataStarships: async () => {
+				try {
+					let response = await fetch("https://www.swapi.tech/api/starships");
+
+					if (!response.ok) {
+						throw new Error(`HTTP error! statutus: ${response.status}`);
+					} else {
+						const data = await response.json();
+						const data_Starships = data.results;
+
+						setStore({ dataStarships: data_Starships });
+					}
+				} catch (error) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
+
+			getDataVehicles: async () => {
+				try {
+					let response = await fetch("https://www.swapi.tech/api/vehicles");
+
+					if (!response.ok) {
+						throw new Error(`HTTP error! statutus: ${response.status}`);
+					} else {
+						const data = await response.json();
+						const data_Vehicles = data.results;
+
+						setStore({ dataVehicles: data_Vehicles });
+					}
+				} catch (error) {
+					console.error(`error from database -- ${e}`);
+				}
 			}
 		}
 	};
