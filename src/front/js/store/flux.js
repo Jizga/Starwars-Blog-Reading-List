@@ -1,7 +1,4 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	// let category;
-	// const url = `https://www.swapi.tech/api/${category}`;
-
 	return {
 		store: {
 			dataPeople: [],
@@ -12,8 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getDataPeople: async () => {
-				// category='people'
-
 				try {
 					let response = await fetch("https://www.swapi.tech/api/people");
 

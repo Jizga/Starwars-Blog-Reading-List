@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { Character } from "./pages/Character";
@@ -23,10 +22,12 @@ const Layout = () => {
 					<Route exact path="/">
 						<Home />
 					</Route>
-					<Route exact path={`/character`}>
-						{/* path={`/character${id}`} */}
+
+					{/* No funciona el "useParams" */}
+					<Route exact path="/single/:uid">
 						<Character />
 					</Route>
+
 					<Route>
 						<h1>Not found!</h1>
 					</Route>

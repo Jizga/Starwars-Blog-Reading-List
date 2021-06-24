@@ -15,8 +15,7 @@ export function Card(props) {
 				<p className="card-text">
 					Some quick example text to build on the card title and make up the bulk of the card content.
 				</p>
-				<Link to={props.url}>
-					{/* Habría que pasarle un id */}
+				<Link to={`/people/${props.id}`}>
 					<button className="btn btn-primary">Show more</button>
 				</Link>
 			</div>
