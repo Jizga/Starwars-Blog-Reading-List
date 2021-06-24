@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import StarWars from "../../img/StarWars.png";
+import "../../styles/card.scss";
 
 export function Card(props) {
 	return (
-		<div className="card">
+		<div className="card myCard">
 			<img className="card-img-top" src={StarWars} alt={props.name} />
 
 			<div className="card-body">

@@ -13,7 +13,7 @@ export const Home = () => {
 			{/* <div className="alert alert-info">{store.dataPeople || "Loading data ..."}</div> */}
 			<div className="container">
 				<h3 className="text-white text-left mb-4">Characters</h3>
-				<div className="row">
+				<div className="d-flex flex-row myScroll">
 					<Characters />
 				</div>
 			</div>
