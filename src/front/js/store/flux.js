@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataSpecies: [],
 			dataStarships: [],
 			dataVehicles: [],
+			detailsPeople: [],
 			favouritesList: []
 		},
 		actions: {
@@ -33,8 +34,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getDataPlanets: async () => {
 				try {
-					// category='planets'
-
 					let response = await fetch("https://www.swapi.tech/api/planets");
 
 					if (!response.ok) {
@@ -53,7 +52,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getDataSpecies: async () => {
 				try {
-					// category = "species";
 					let response = await fetch("https://www.swapi.tech/api/species");
 
 					if (!response.ok) {
@@ -66,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ dataSpecies: data_Species });
 					}
 				} catch (error) {
-					console.error(`error from database -- ${e}`);
+					console.error(`error from database -- ${error}`);
 				}
 			},
 
@@ -83,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ dataStarships: data_Starships });
 					}
 				} catch (error) {
-					console.error(`error from database -- ${e}`);
+					console.error(`error from database -- ${error}`);
 				}
 			},
 
@@ -100,9 +98,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ dataVehicles: data_Vehicles });
 					}
 				} catch (error) {
-					console.error(`error from database -- ${e}`);
+					console.error(`error from database -- ${error}`);
 				}
 			},
+
+			// getPeople: async id => {
+			// 	try {
+			// 		let response = await fetch(`https://www.swapi.tech/api/people/${id}`);
+
+			// 		if (!response.ok) {
+			// 			throw new Error(`HTTP error! status: ${response.status}`);
+			// 		} else {
+			// 			const data = await response.json();
+
+			// 			const data_detailsPeople = data.result;
+
+			// 			console.log("Detalles del personaje seleccionado desde Flux - ", data_detailsPeople);
+
+			// 			setStore({ detailsPeople: data_detailsPeople });
+			// 		}
+			// 	} catch (e) {
+			// 		console.error(`error from database -- ${e}`);
+			// 	}
+			// },
 
 			addFavourite: (idItem, item) => {
 				//get the store

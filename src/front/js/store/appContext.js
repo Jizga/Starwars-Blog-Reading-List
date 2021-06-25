@@ -22,16 +22,14 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			/**
-			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
-			 * store, instead use actions
-			 **/
-
 			state.actions.getDataPeople();
 			state.actions.getDataPlanets();
 			state.actions.getDataSpecies();
 			state.actions.getDataStarships();
 			state.actions.getDataVehicles();
+
+			//**** Me hace la llamada cada dos por tres. Por qué????? */
+			// state.actions.getPeople();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

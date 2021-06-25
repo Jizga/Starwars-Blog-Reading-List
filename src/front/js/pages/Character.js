@@ -4,13 +4,10 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export function Character() {
-	const { store, actions } = useContext(Context);
-	//No funciona
 	const { uid } = useParams();
+	const { store, actions } = useContext(Context);
 
-	//No sale ni por consolaaaaaa
-
-	console.log("uid -- ", uid);
+	// actions.getPeople(uid);
 
 	return (
 		<>

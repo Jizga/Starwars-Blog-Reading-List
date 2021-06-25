@@ -35,6 +35,10 @@ export const MyNavbar = () => {
 									<FavouritesList id={item.uid} name={item.name} url={item.url} />
 								</NavDropdown.Item>;
 							})}
+
+							<NavDropdown.Item href="#action/0">
+								<p>Lista de favoritos aquí -.- </p>
+							</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>
