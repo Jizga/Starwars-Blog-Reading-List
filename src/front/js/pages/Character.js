@@ -1,15 +1,9 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-// , { useContext }
-// import { Context } from "../store/appContext";
 
-export function Character(props) {
-	// const { store, actions } = useContext(Context);
-
-	let { uid } = useParams();
-
-	console.log("props desde detalle del ersonaje", props);
+export function Character() {
+	//No funciona
+	const params = useParams();
 
 	return (
 		<div className="container">
@@ -18,7 +12,7 @@ export function Character(props) {
 					<img src="" />
 				</div>
 				<div className="col-8">
-					<h2>{uid}</h2>
+					<h2>{store.dataPeople[params.uid].name}</h2>
 					<p>Descripción del personaje</p>
 				</div>
 			</div>
@@ -30,8 +24,3 @@ export function Character(props) {
 		</div>
 	);
 }
-
-// Character.propTypes = {
-// 	url: PropTypes.string,
-// 	id: PropTypes.string
-// };

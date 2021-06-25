@@ -15,9 +15,16 @@ export function Card(props) {
 				<p className="card-text">
 					Some quick example text to build on the card title and make up the bulk of the card content.
 				</p>
-				<Link to={`/people/${props.id}`}>
-					<button className="btn btn-primary">Show more</button>
-				</Link>
+
+				<div className="d-flex justify-content-around">
+					<Link to={`/people/${props.id}`}>
+						<button className="btn btn-outline-primary">Show more</button>
+					</Link>
+
+					<button className="btn icon">
+						<i className="fas fa-heart fa-lg" onClick={() => props.addFavourite(props.id, props)} />
+					</button>
+				</div>
 			</div>
 		</div>
 	);
@@ -26,5 +33,6 @@ export function Card(props) {
 Card.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
-	url: PropTypes.string
+	url: PropTypes.string,
+	addFavourite: PropTypes.func
 };

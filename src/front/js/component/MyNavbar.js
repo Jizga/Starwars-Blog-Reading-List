@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../img/sw-white.png";
 
 import "../../styles/myNavbar.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import { FavouritesList } from "./FavouritesList";
+import { Context } from "../store/appContext";
 
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -11,6 +14,8 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 export const MyNavbar = () => {
+	const { store } = useContext(Context);
+
 	return (
 		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" id="myNav">
 			<Container id="myContainerNB">
@@ -23,11 +28,11 @@ export const MyNavbar = () => {
 							title="Favourites"
 							id="collasible-nav-dropdown"
 							className="btn btn-outline-warning">
-							<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-							<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+							{store.dataPeople.map((item, i) => {
+								<NavDropdown.Item href={`#action/${i}`} key={item.uid}>
+									<FavouritesList id={item.uid} name={item.name} url={item.url} />
+								</NavDropdown.Item>;
+							})}
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>

@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataPlanets: [],
 			dataSpecies: [],
 			dataStarships: [],
-			dataVehicles: []
+			dataVehicles: [],
+			favouritesList: []
 		},
 		actions: {
 			getDataPeople: async () => {
@@ -97,6 +98,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error(`error from database -- ${e}`);
 				}
+			},
+
+			addFavourite: (idItem, item) => {
+				//get the store
+				const store = getStore();
+
+				return store.dataPeople.filter(
+					people => (people.uid === idItem ? setStore({ favouritesList: item }) : null)
+				);
 			}
 		}
 	};
