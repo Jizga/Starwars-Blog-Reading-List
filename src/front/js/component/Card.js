@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+import { Context } from "../store/appContext";
 
 import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
 	const [favourite, setFavourite] = useState([]);
+	const { actions } = useContext(Context);
 
 	return (
 		<div className="card myCard">
@@ -20,7 +23,9 @@ export function Card(props) {
 
 				<div className="d-flex justify-content-around">
 					<Link to={`/people/${props.id}`}>
-						<button className="btn btn-outline-primary">Show more</button>
+						<button className="btn btn-outline-primary" onClick={() => actions.getPeople(props.id)}>
+							Show more
+						</button>
 					</Link>
 
 					<button className="btn icon">

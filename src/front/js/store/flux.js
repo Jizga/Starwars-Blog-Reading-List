@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataSpecies: [],
 			dataStarships: [],
 			dataVehicles: [],
-			detailsPeople: [],
+			detailsPeople: {},
 			favouritesList: []
 		},
 		actions: {
@@ -102,25 +102,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// getPeople: async id => {
-			// 	try {
-			// 		let response = await fetch(`https://www.swapi.tech/api/people/${id}`);
+			getPeople: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/people/${id}`);
 
-			// 		if (!response.ok) {
-			// 			throw new Error(`HTTP error! status: ${response.status}`);
-			// 		} else {
-			// 			const data = await response.json();
+					const data = await response.json();
 
-			// 			const data_detailsPeople = data.result;
+					const data_detailsPeople = data.result;
 
-			// 			console.log("Detalles del personaje seleccionado desde Flux - ", data_detailsPeople);
+					console.log("Detalles del personaje seleccionado desde Flux - ", data_detailsPeople);
 
-			// 			setStore({ detailsPeople: data_detailsPeople });
-			// 		}
-			// 	} catch (e) {
-			// 		console.error(`error from database -- ${e}`);
-			// 	}
-			// },
+					setStore({ detailsPeople: data_detailsPeople });
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
 
 			addFavourite: (idItem, item) => {
 				//get the store
