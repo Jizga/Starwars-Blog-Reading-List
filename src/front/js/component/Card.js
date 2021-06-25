@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -8,8 +8,38 @@ import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
-	const [favourite, setFavourite] = useState([]);
+	console.log("props.favorite en Card -- ", props.favorite);
+
 	const { actions } = useContext(Context);
+
+	// const [characterDetails, setCharacterDetails] = useState(undefined);
+
+	// useEffect(() => {
+	// 	getCharacterDetails(props.url);
+	// }, []);
+
+	// const getCharacterDetails = async url => {
+	// 	try {
+	// 		let response = await fetch(url);
+
+	// 		const data = await response.json();
+
+	// 		const data_detailsPeople = data.result;
+
+	// 		setCharacterDetails(data_detailsPeople);
+	// 	} catch (e) {
+	// 		console.error(`error from database -- ${e}`);
+	// 	}
+	// };
+
+	//Para añadir el personaje a la lista de favoritos
+	const favoriteDetails = () => {
+		if (props.favorite) {
+			return <i className="fas fa-heart fa-lg" />;
+		} else {
+			return <i className="fas fa-heart fa-lg" />;
+		}
+	};
 
 	return (
 		<div className="card myCard">
@@ -23,24 +53,16 @@ export function Card(props) {
 
 				<div className="d-flex justify-content-around">
 					<Link to={`/people/${props.id}`}>
-						<button className="btn btn-outline-primary" onClick={() => actions.getPeople(props.id)}>
+						<button
+							className="btn btn-outline-primary"
+							onClick={() => actions.getPeople(props.id)}
+							// onClick={() => getCharacterDetails(props.url)}
+						>
 							Show more
 						</button>
 					</Link>
 
-					<button className="btn icon">
-						<i
-							className="fas fa-heart fa-lg"
-							onClick={() => {
-								props.addFavourite(props.id, props);
-
-								//No lo coge
-								setFavourite(favourite => [...favourite, props]);
-
-								console.log("Favoritos --> ", favourite);
-							}}
-						/>
-					</button>
+					<button className="btn icon">{favoriteDetails()}</button>
 				</div>
 			</div>
 		</div>
@@ -51,5 +73,5 @@ Card.propTypes = {
 	id: PropTypes.string,
 	name: PropTypes.string,
 	url: PropTypes.string,
-	addFavourite: PropTypes.func
+	favorite: PropTypes.bool
 };

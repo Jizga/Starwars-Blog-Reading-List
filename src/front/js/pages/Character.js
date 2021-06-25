@@ -8,6 +8,7 @@ import clone from "../../img/clone-white.png";
 
 export function Character() {
 	const { uid } = useParams();
+
 	const { store } = useContext(Context);
 
 	return (
@@ -35,7 +36,9 @@ export function Character() {
 					</div>
 				</div>
 			) : (
-				"Loading..."
+				<div className="text-center text-warning mt-5">
+					<i className="fas fa-spinner fa-pulse fa-6x" />
+				</div>
 			)}
 		</div>
 	);

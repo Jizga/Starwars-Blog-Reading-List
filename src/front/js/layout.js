@@ -23,7 +23,7 @@ const Layout = () => {
 						<Home />
 					</Route>
 
-					{/* No funciona el "useParams" */}
+					{/* "useParams" */}
 					<Route exact path="/people/:uid">
 						<Character />
 					</Route>

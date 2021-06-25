@@ -6,27 +6,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataSpecies: [],
 			dataStarships: [],
 			dataVehicles: [],
-			detailsPeople: {},
-			favouritesList: []
+			detailsPeople: {}
 		},
 		actions: {
 			getDataPeople: async () => {
 				try {
 					let response = await fetch("https://www.swapi.tech/api/people");
 
-					if (!response.ok) {
-						throw new Error(`HTTP error! status: ${response.status}`);
-					} else {
-						const data = await response.json();
+					const data = await response.json();
 
-						// const total_pages = (data.total_pages = 82);
+					//Para poder meter el item como favorito
 
-						// console.log("total_pages : ", total_pages);
+					let formattedCharacters = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
 
-						const data_People = data.results;
-
-						setStore({ dataPeople: data_People });
-					}
+					setStore({ dataPeople: formattedCharacters });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
@@ -36,15 +31,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					let response = await fetch("https://www.swapi.tech/api/planets");
 
-					if (!response.ok) {
-						throw new Error(`HTTP error! status: ${response.status}`);
-					} else {
-						const data = await response.json();
+					const data = await response.json();
 
-						const data_Planets = data.results;
+					let formattedPlanets = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
 
-						setStore({ dataPlanets: data_Planets });
-					}
+					setStore({ dataPlanets: formattedPlanets });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
@@ -54,15 +47,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					let response = await fetch("https://www.swapi.tech/api/species");
 
-					if (!response.ok) {
-						throw new Error(`HTTP error! status: ${response.status}`);
-					} else {
-						const data = await response.json();
+					const data = await response.json();
 
-						const data_Species = data.results;
+					let formattedSpecies = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
 
-						setStore({ dataSpecies: data_Species });
-					}
+					setStore({ dataSpecies: formattedSpecies });
 				} catch (error) {
 					console.error(`error from database -- ${error}`);
 				}
@@ -72,14 +63,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					let response = await fetch("https://www.swapi.tech/api/starships");
 
-					if (!response.ok) {
-						throw new Error(`HTTP error! statutus: ${response.status}`);
-					} else {
-						const data = await response.json();
-						const data_Starships = data.results;
+					const data = await response.json();
 
-						setStore({ dataStarships: data_Starships });
-					}
+					let formattedStarships = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
+
+					setStore({ dataStarships: formattedStarships });
 				} catch (error) {
 					console.error(`error from database -- ${error}`);
 				}
@@ -89,14 +79,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					let response = await fetch("https://www.swapi.tech/api/vehicles");
 
-					if (!response.ok) {
-						throw new Error(`HTTP error! statutus: ${response.status}`);
-					} else {
-						const data = await response.json();
-						const data_Vehicles = data.results;
+					const data = await response.json();
 
-						setStore({ dataVehicles: data_Vehicles });
-					}
+					let formattedVehicles = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
+
+					setStore({ dataVehicles: formattedVehicles });
 				} catch (error) {
 					console.error(`error from database -- ${error}`);
 				}
@@ -116,15 +105,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
-			},
-
-			addFavourite: (idItem, item) => {
-				//get the store
-				const store = getStore();
-
-				return store.dataPeople.filter(
-					people => (people.uid === idItem ? setStore({ favouritesList: item }) : null)
-				);
 			}
 		}
 	};

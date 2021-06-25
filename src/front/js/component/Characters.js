@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Characters() {
-	const { store, actions } = useContext(Context);
+	const { store } = useContext(Context);
 
 	return (
 		<>
@@ -17,7 +17,7 @@ export function Characters() {
 							id={character.uid}
 							name={character.name}
 							url={character.url}
-							addFavourite={actions.addFavourite}
+							favorite={character.favorite}
 						/>
 					</div>
 				);

@@ -27,9 +27,6 @@ const injectContext = PassedComponent => {
 			state.actions.getDataSpecies();
 			state.actions.getDataStarships();
 			state.actions.getDataVehicles();
-
-			//**** Me hace la llamada cada dos por tres. Por qué????? */
-			// state.actions.getPeople();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
