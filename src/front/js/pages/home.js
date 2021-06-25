@@ -7,6 +7,7 @@ import { Characters } from "../component/Characters";
 import { Planets } from "../component/Planets";
 import { Species } from "../component/Species";
 import { Starships } from "../component/Starships";
+import { Vehicles } from "../component/Vehicles";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -39,6 +40,13 @@ export const Home = () => {
 				<h3 className="text-white text-left mb-4">Starships</h3>
 				<div className="d-flex flex-row myScroll">
 					<Starships />
+				</div>
+			</div>
+
+			<div className="container">
+				<h3 className="text-white text-left mb-4">Vehicles</h3>
+				<div className="d-flex flex-row myScroll">
+					<Vehicles />
 				</div>
 			</div>
 		</div>
