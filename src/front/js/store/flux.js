@@ -18,6 +18,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} else {
 						const data = await response.json();
 
+						// const total_pages = (data.total_pages = 82);
+
+						// console.log("total_pages : ", total_pages);
+
 						const data_People = data.results;
 
 						setStore({ dataPeople: data_People });
