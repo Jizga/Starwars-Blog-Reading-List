@@ -28,6 +28,8 @@ export const MyNavbar = () => {
 							title="Favourites"
 							id="collasible-nav-dropdown"
 							className="btn btn-outline-warning">
+							{/* No aparece la lista de los elementos seleccionados como favoritos */}
+
 							{store.dataPeople.map((item, i) => {
 								<NavDropdown.Item href={`#action/${i}`} key={item.uid}>
 									<FavouritesList id={item.uid} name={item.name} url={item.url} />

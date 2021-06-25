@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,8 @@ import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
+	const [favourite, setFavourite] = useState([]);
+
 	return (
 		<div className="card myCard">
 			<img className="card-img-top" src={StarWars} alt={props.name} />
@@ -22,7 +24,17 @@ export function Card(props) {
 					</Link>
 
 					<button className="btn icon">
-						<i className="fas fa-heart fa-lg" onClick={() => props.addFavourite(props.id, props)} />
+						<i
+							className="fas fa-heart fa-lg"
+							onClick={() => {
+								props.addFavourite(props.id, props);
+
+								//No lo coge
+								setFavourite(favourite => [...favourite, props]);
+
+								console.log("Favoritos --> ", favourite);
+							}}
+						/>
 					</button>
 				</div>
 			</div>
