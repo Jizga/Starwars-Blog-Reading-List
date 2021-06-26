@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
-import { Character } from "./pages/Character";
+import { DetailsCharacter } from "./pages/DetailsCharacter";
+import {DetailsPlanet} from "./pages/DetailsPlanet"
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/MyNavbar";
@@ -25,8 +26,12 @@ const Layout = () => {
 
 					{/* "useParams" */}
 					<Route exact path="/people/:uid">
-						<Character />
+						<DetailsCharacter />
 					</Route>
+
+                    <Route exact path = "/planets/:uid">
+                        <DetailsPlanet/>
+                    </Route>
 
 					<Route>
 						<h1>Not found!</h1>

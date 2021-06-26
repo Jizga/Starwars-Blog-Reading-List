@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Characters() {
-	const { store, actions } = useContext(Context);
+	const { store } = useContext(Context);
 
 	const addFavourite = characterId => {
 		store.dataPeople.map(
@@ -25,7 +25,7 @@ export function Characters() {
 							url={character.url}
 							favorite={character.favorite}
 							addFavourite={addFavourite}
-							getPeople={actions.getPeople}
+							// getPeople={actions.getDetailsPeople}
 						/>
 					</div>
 				);

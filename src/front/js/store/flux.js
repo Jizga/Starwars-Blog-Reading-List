@@ -6,7 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataSpecies: [],
 			dataStarships: [],
 			dataVehicles: [],
-			detailsPeople: {}
+			detailsPeople: {},
+			detailsPanet: {}
 		},
 		actions: {
 			getDataPeople: async () => {
@@ -91,18 +92,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getPeople: async id => {
+			getDetailsPeople: async id => {
 				try {
 					let response = await fetch(`https://www.swapi.tech/api/people/${id}`);
 
 					const data = await response.json();
 
-					let formattedVehicles = data.results.map(item => {
+					let formattedDetailsPeople = data.results.map(item => {
 						return { ...item, favorite: false };
 					});
 
 					//Da un objecto
-					setStore({ detailsPeople: formattedVehicles });
+					setStore({ detailsPeople: formattedDetailsPeople });
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
+
+			getDetailsPlanet: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/planets/${id}`);
+
+					const data = await response.json();
+
+					let formattedDetailsPlanet = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
+
+					//Da un objecto
+					setStore({ detailsPanet: formattedDetailsPlanet });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}

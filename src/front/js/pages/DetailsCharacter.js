@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext";
 
@@ -6,22 +6,21 @@ import "../../styles/character.scss";
 import clone from "../../img/clone-white.png";
 import { useParams } from "react-router-dom";
 
-export function Character() {
+export function DetailsCharacter() {
+	const { store, actions } = useContext(Context);
 
-    const { store, actions } = useContext(Context);
-    
-    //***** Para que a la hora de recargar la pagina no se pierdan los datos */
-    let {uid} = useParams( )
+	//***** Para que a la hora de recargar la pagina no se pierdan los datos */
+	let { uid } = useParams();
 
-    useEffect(() => {
-		actions.getPeople(uid);
+	useEffect(() => {
+		actions.getDetailsPeople(uid);
 	}, []);
-
 
 	return (
 		<div className="container text-white myBox">
 			{store.detailsPeople.properties ? (
 				<div>
+					{console.log("store.detailsPeople.properties --- ", store.detailsPeople.properties)}
 					<div className="row">
 						<div className="col-4">
 							<img src={clone} id="imgCharacter" />
