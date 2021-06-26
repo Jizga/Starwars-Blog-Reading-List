@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/details.scss";
-import clone from "../../img/clone-white.png";
+import AlconMilenario from "../../img/alconMilenario.png";
 import { useParams } from "react-router-dom";
 
 export function DetailsStarship() {
@@ -22,7 +22,7 @@ export function DetailsStarship() {
 				<div>
 					<div className="row">
 						<div className="col-4">
-							<img src={clone} id="imgCharacter" />
+							<img src={AlconMilenario} id="imgCharacter" />
 						</div>
 						<div className="col-8">
 							<h2>{store.detailsStarship.properties.name}</h2>

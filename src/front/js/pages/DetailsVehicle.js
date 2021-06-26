@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/details.scss";
-import clone from "../../img/clone-white.png";
+import vehicle from "../../img/vehicle.png";
 import { useParams } from "react-router-dom";
 
 export function DetailsVehicle() {
@@ -22,7 +22,7 @@ export function DetailsVehicle() {
 				<div>
 					<div className="row">
 						<div className="col-4">
-							<img src={clone} id="imgCharacter" />
+							<img src={vehicle} id="imgCharacter" />
 						</div>
 						<div className="col-8">
 							<h2>{store.detailsVehicle.properties.name}</h2>
