@@ -97,11 +97,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 
-					const data_detailsPeople = data.result;
+					let formattedVehicles = data.results.map(item => {
+						return { ...item, favorite: false };
+					});
 
-					console.log("Detalles del personaje seleccionado desde Flux - ", data_detailsPeople);
-
-					setStore({ detailsPeople: data_detailsPeople });
+					//Da un objecto
+					setStore({ detailsPeople: formattedVehicles });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}

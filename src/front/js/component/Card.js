@@ -10,20 +10,10 @@ import "../../styles/card.scss";
 export function Card(props) {
 	const { store, actions } = useContext(Context);
 
-	//Se carga muchisimas veces (???????)
-	// useEffect(() => {
-	// 	actions.getPeople(props.id);
-	// }, []);
-
-	// console.log("store.detailsPeople desde Card : ", store.detailsPeople);
-
-	//Para añadir el personaje a la lista de favoritos
-	const favoriteDetails = () => {
-		if (props.favorite) {
-			return <i className="fas fa-heart fa-lg" />;
-		} else {
-			return <i className="fas fa-heart fa-lg" />;
-		}
+	const addFavourite = characterId => {
+		store.dataPeople.map(
+			character => (character.uid === characterId ? (character.favorite = true) : (character.favorite = false))
+		);
 	};
 
 	return (
@@ -33,12 +23,6 @@ export function Card(props) {
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
 
-				{/* {Object.entries(store.detailsPeople.properties).map(char => {
-					<p className="card-text" key={char.uid}>
-						{`${property[0]}: ${property[1]}`}
-					</p>;
-				})} */}
-
 				<div className="d-flex justify-content-around">
 					<Link to={`/people/${props.id}`}>
 						<button className="btn btn-outline-primary" onClick={() => actions.getPeople(props.id)}>
@@ -46,7 +30,9 @@ export function Card(props) {
 						</button>
 					</Link>
 
-					<button className="btn icon">{favoriteDetails()}</button>
+					<button className="btn icon" onClick={() => addFavourite(props.id)}>
+						<i className="fas fa-heart fa-lg" />
+					</button>
 				</div>
 			</div>
 		</div>
