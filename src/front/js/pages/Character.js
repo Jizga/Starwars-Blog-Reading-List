@@ -1,15 +1,22 @@
 import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
 import "../../styles/character.scss";
 import clone from "../../img/clone-white.png";
+import { useParams } from "react-router-dom";
 
 export function Character() {
-	const { uid } = useParams();
 
-	const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
+    
+    //***** Para que a la hora de recargar la pagina no se pierdan los datos */
+    let {uid} = useParams( )
+
+    useEffect(() => {
+		actions.getPeople(uid);
+	}, []);
+
 
 	return (
 		<div className="container text-white myBox">

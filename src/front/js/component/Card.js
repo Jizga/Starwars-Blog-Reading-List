@@ -1,18 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-// import { Context } from "../store/appContext";
 
 import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
-	// const { actions } = useContext(Context);
-
-	// useEffect(() => {
-	// 	props.getPeople;
-	// }, []);
 
 	return (
 		<div className="card myCard">
@@ -25,7 +19,6 @@ export function Card(props) {
 					<Link to={`/people/${props.id}`}>
 						<button
 							className="btn btn-outline-primary"
-							// onClick={() => actions.getPeople(props.id)}
 							onClick={() => props.getPeople(props.id)}>
 							Show more
 						</button>
