@@ -10,7 +10,9 @@ import "../../styles/card.scss";
 export function Card(props) {
 	// const { actions } = useContext(Context);
 
-	console.log(props);
+	// useEffect(() => {
+	// 	props.getPeople;
+	// }, []);
 
 	return (
 		<div className="card myCard">
@@ -44,5 +46,5 @@ Card.propTypes = {
 	url: PropTypes.string,
 	favorite: PropTypes.bool,
 	addFavourite: PropTypes.func,
-	getPeople: PropTypes.func
+	getPeople: PropTypes.object
 };
