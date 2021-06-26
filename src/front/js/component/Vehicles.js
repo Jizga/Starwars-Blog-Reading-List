@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Vehicles() {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const addFavourite = vehicleId => {
 		store.dataVehicles.map(
@@ -25,6 +25,8 @@ export function Vehicles() {
 							url={vehicle.url}
 							favorite={vehicle.favorite}
 							addFavourite={addFavourite}
+							showDetails={actions.getDetailsVehicle}
+							category="/vehicles/"
 						/>
 					</div>
 				);

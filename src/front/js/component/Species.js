@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Species() {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const addFavourite = specieId => {
 		store.dataSpecies.map(
@@ -25,6 +25,8 @@ export function Species() {
 							url={specie.url}
 							favorite={specie.favorite}
 							addFavourite={addFavourite}
+							showDetails={actions.getDetailsSpecie}
+							category="/species/"
 						/>
 					</div>
 				);

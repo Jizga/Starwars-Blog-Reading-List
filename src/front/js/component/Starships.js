@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Starships() {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const addFavourite = starshipId => {
 		store.dataStarships.map(
@@ -25,6 +25,8 @@ export function Starships() {
 							url={starship.url}
 							favorite={starship.favorite}
 							addFavourite={addFavourite}
+							showDetails={actions.getDetailsStarship}
+							category="/starships/"
 						/>
 					</div>
 				);

@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import { Context } from "../store/appContext";
+// import { Context } from "../store/appContext";
 
 import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
-	const { store, actions } = useContext(Context);
+	// const { store, actions } = useContext(Context);
 
 	return (
 		<div className="card myCard">
@@ -18,12 +18,13 @@ export function Card(props) {
 				<h5 className="card-title text-center">{props.name}</h5>
 
 				<div className="d-flex justify-content-around">
-					<Link to={`/people/${props.id}`}>
+					<Link to={`${props.category}${props.id}`}>
 						<button
 							className="btn btn-outline-primary"
 							//Hay que condicionar este botón según el tipo de Card que sea **************
 
-							onClick={() => actions.getDetailsPeople(props.id)}>
+							// onClick={() => actions.getDetailsPeople(props.id)}
+							onClick={() => props.showDetails(props.id)}>
 							Show more
 						</button>
 					</Link>
@@ -42,6 +43,7 @@ Card.propTypes = {
 	name: PropTypes.string,
 	url: PropTypes.string,
 	favorite: PropTypes.bool,
-	addFavourite: PropTypes.func
-	// getDetailsPeople: PropTypes.object
+	addFavourite: PropTypes.func,
+	showDetails: PropTypes.func,
+	category: PropTypes.string
 };

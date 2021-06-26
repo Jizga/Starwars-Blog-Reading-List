@@ -6,12 +6,10 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Planets() {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const addFavourite = planetId => {
-		store.dataPlanets.map(
-			planet => (planet.uid === planetId ? (planet.favorite = true) : (planet.favorite = false))
-		);
+		store.dataPlanets.map(planet => (planet.uid === planetId ? (planet.favorite = true) : planet.favorite));
 	};
 
 	return (
@@ -25,6 +23,8 @@ export function Planets() {
 							url={planet.url}
 							favorite={planet.favorite}
 							addFavourite={addFavourite}
+							showDetails={actions.getDetailsPlanet}
+							category="/planets/"
 						/>
 					</div>
 				);

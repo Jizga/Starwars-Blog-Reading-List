@@ -6,11 +6,11 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Characters() {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const addFavourite = characterId => {
 		store.dataPeople.map(
-			character => (character.uid === characterId ? (character.favorite = true) : (character.favorite = false))
+			character => (character.uid === characterId ? (character.favorite = true) : character.favorite)
 		);
 	};
 
@@ -25,6 +25,8 @@ export function Characters() {
 							url={character.url}
 							favorite={character.favorite}
 							addFavourite={addFavourite}
+							showDetails={actions.getDetailsPeople}
+							category="/people/"
 						/>
 					</div>
 				);
