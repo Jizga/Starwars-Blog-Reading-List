@@ -25,7 +25,6 @@ export function Characters() {
 							url={character.url}
 							favorite={character.favorite}
 							addFavourite={addFavourite}
-							// getPeople={actions.getDetailsPeople}
 						/>
 					</div>
 				);

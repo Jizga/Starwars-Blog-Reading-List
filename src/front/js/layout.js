@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "./pages/home";
 import { DetailsCharacter } from "./pages/DetailsCharacter";
 import { DetailsPlanet } from "./pages/DetailsPlanet";
+import { DetailsSpecie } from "./pages/DetailsSpecie";
+import { DetailsStarship } from "./pages/DetailsStarship";
+import { DetailsVehicle } from "./pages/DetailsVehicle";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/MyNavbar";
@@ -31,6 +34,18 @@ const Layout = () => {
 
 					<Route exact path="/planets/:uid">
 						<DetailsPlanet />
+					</Route>
+
+					<Route exact path="/species/:uid">
+						<DetailsSpecie />
+					</Route>
+
+					<Route exact path="/starships/:uid">
+						<DetailsStarship />
+					</Route>
+
+					<Route exact path="/vehicles/:uid">
+						<DetailsVehicle />
 					</Route>
 
 					<Route>

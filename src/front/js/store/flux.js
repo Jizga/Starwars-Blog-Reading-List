@@ -8,9 +8,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataVehicles: [],
 			detailsPeople: {},
 			detailsPanet: {},
-			detailsSpecies: {},
-			detailsStarships: {},
-			detailsVehicles: {}
+			detailsSpecie: {},
+			detailsStarship: {},
+			detailsVehicle: {}
 		},
 		actions: {
 			getDataPeople: async () => {
@@ -125,46 +125,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getDetailsSpecies: async id => {
+			getDetailsSpecie: async id => {
 				try {
 					let response = await fetch(`https://www.swapi.tech/api/species/${id}`);
 
 					const data = await response.json();
 
-					let data_DetailsSpecies = data.result;
+					let data_DetailsSpecie = data.result;
 
 					//Da un objecto
-					setStore({ detailsSpecies: data_DetailsSpecies });
+					setStore({ detailsSpecie: data_DetailsSpecie });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
 			},
 
-			getDetailsStarships: async id => {
+			getDetailsStarship: async id => {
 				try {
 					let response = await fetch(`https://www.swapi.tech/api/starships/${id}`);
 
 					const data = await response.json();
 
-					let data_DetailsStarships = data.result;
+					let data_DetailsStarship = data.result;
 
 					//Da un objecto
-					setStore({ detailsStarships: data_DetailsStarships });
+					setStore({ detailsStarship: data_DetailsStarship });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
 			},
 
-			getDetailsVehicles: async id => {
+			getDetailsVehicle: async id => {
 				try {
 					let response = await fetch(`https://www.swapi.tech/api/vehicles/${id}`);
 
 					const data = await response.json();
 
-					let data_DetailsVehicles = data.result;
+					let data_DetailsVehicle = data.result;
 
 					//Da un objecto
-					setStore({ detailsVehicles: data_DetailsVehicles });
+					setStore({ detailsVehicle: data_DetailsVehicle });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}

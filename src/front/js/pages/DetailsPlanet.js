@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 
 import { Context } from "../store/appContext";
 
-import "../../styles/character.scss";
+import "../../styles/details.scss";
 import clone from "../../img/clone-white.png";
 import { useParams } from "react-router-dom";
 

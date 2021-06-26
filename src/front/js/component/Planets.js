@@ -8,9 +8,9 @@ import "../../styles/Characters.scss";
 export function Planets() {
 	const { store } = useContext(Context);
 
-	const addFavourite = characterId => {
+	const addFavourite = planetId => {
 		store.dataPlanets.map(
-			character => (character.uid === characterId ? (character.favorite = true) : (character.favorite = false))
+			planet => (planet.uid === planetId ? (planet.favorite = true) : (planet.favorite = false))
 		);
 	};
 
@@ -19,7 +19,13 @@ export function Planets() {
 			{store.dataPlanets.map(planet => {
 				return (
 					<div key={planet.uid} className="col-md-3">
-						<Card id={planet.uid} name={planet.name} url={planet.url} addFavourite={addFavourite} />
+						<Card
+							id={planet.uid}
+							name={planet.name}
+							url={planet.url}
+							favorite={planet.favorite}
+							addFavourite={addFavourite}
+						/>
 					</div>
 				);
 			})}
