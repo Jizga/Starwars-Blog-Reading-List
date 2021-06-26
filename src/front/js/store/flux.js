@@ -7,7 +7,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			dataStarships: [],
 			dataVehicles: [],
 			detailsPeople: {},
-			detailsPanet: {}
+			detailsPanet: {},
+			detailsSpecies: {},
+			detailsStarships: {},
+			detailsVehicles: {}
 		},
 		actions: {
 			getDataPeople: async () => {
@@ -98,12 +101,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 
-					let formattedDetailsPeople = data.results.map(item => {
-						return { ...item, favorite: false };
-					});
+					let data_DetailsPeople = data.result;
 
 					//Da un objecto
-					setStore({ detailsPeople: formattedDetailsPeople });
+					setStore({ detailsPeople: data_DetailsPeople });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
@@ -115,12 +116,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 
-					let formattedDetailsPlanet = data.results.map(item => {
-						return { ...item, favorite: false };
-					});
+					let data_DetailsPlanet = data.result;
 
 					//Da un objecto
-					setStore({ detailsPanet: formattedDetailsPlanet });
+					setStore({ detailsPanet: data_DetailsPlanet });
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
+
+			getDetailsSpecies: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/species/${id}`);
+
+					const data = await response.json();
+
+					let data_DetailsSpecies = data.result;
+
+					//Da un objecto
+					setStore({ detailsSpecies: data_DetailsSpecies });
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
+
+			getDetailsStarships: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/starships/${id}`);
+
+					const data = await response.json();
+
+					let data_DetailsStarships = data.result;
+
+					//Da un objecto
+					setStore({ detailsStarships: data_DetailsStarships });
+				} catch (e) {
+					console.error(`error from database -- ${e}`);
+				}
+			},
+
+			getDetailsVehicles: async id => {
+				try {
+					let response = await fetch(`https://www.swapi.tech/api/vehicles/${id}`);
+
+					const data = await response.json();
+
+					let data_DetailsVehicles = data.result;
+
+					//Da un objecto
+					setStore({ detailsVehicles: data_DetailsVehicles });
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}

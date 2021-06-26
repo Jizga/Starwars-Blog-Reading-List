@@ -20,7 +20,6 @@ export function DetailsCharacter() {
 		<div className="container text-white myBox">
 			{store.detailsPeople.properties ? (
 				<div>
-					{console.log("store.detailsPeople.properties --- ", store.detailsPeople.properties)}
 					<div className="row">
 						<div className="col-4">
 							<img src={clone} id="imgCharacter" />

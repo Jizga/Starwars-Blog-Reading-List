@@ -22,7 +22,7 @@ export function Card(props) {
 						<button
 							className="btn btn-outline-primary"
 							//Hay que condicionar este botón según el tipo de Card que sea **************
-							// onClick={() => props.getDetailsPeople(props.id)}
+
 							onClick={() => actions.getDetailsPeople(props.id)}>
 							Show more
 						</button>

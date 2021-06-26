@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 import "../../styles/Characters.scss";
 
 export function Planets() {
-	const { store, actions } = useContext(Context);
+	const { store } = useContext(Context);
 
 	const addFavourite = characterId => {
 		store.dataPlanets.map(
