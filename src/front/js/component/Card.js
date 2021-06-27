@@ -29,7 +29,11 @@ export function Card(props) {
 						// onClick={() => props.addFavourite(props.data, props.id, props.favouritesArr)}
 
 						onClick={() => props.addFavourite(props.data, props.url, props.favouritesArr)}>
-						<i className="fas fa-heart fa-lg" />
+						{props.favorite === false ? (
+							<i className="fas fa-heart fa-lg" />
+						) : (
+							<i className="fas fa-heart fa-lg text-danger" />
+						)}
 					</button>
 				</div>
 			</div>

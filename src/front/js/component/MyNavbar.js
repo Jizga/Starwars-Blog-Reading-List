@@ -39,10 +39,6 @@ export const MyNavbar = () => {
 
 										<i
 											className="far fa-trash-alt"
-											//Se rompe la app cuando se intenta borrar o añadir un elemento a la lista
-											// Es pq el "favourites" se ha modificado cuando se añade y cunado se borra
-											// pero...pq??????
-											//
 											onClick={() => actions.deleteFavourite(item.url, store.favourites)}
 										/>
 									</li>
