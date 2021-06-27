@@ -16,16 +16,13 @@ export function DetailsStarship() {
 		actions.getDetailsStarship(uid);
 	}, []);
 
-	// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
-	// Al recargar la página se soluciona ==== */
-	//
 	const splitDetailsFirstPart = obj => {
 		let firstPart = Object.entries(obj)
 			.slice(0, Object.entries(obj).length / 2)
 			.map(property => {
 				return (
-					<li key={Date.now()} className="col-12 text-danger list-unstyled">
-						{property[0]}: {property[1]}
+					<li key={property[0]} className="col-12 text-warning list-unstyled">
+						{property[0]} : {property[1]}
 					</li>
 				);
 			});
@@ -38,8 +35,8 @@ export function DetailsStarship() {
 			.slice(Object.entries(obj).length / 2, Object.entries(obj).length)
 			.map(property => {
 				return (
-					<li key={Date.now()} className="col-12 text-danger list-unstyled">
-						{property[0]}: {property[1]}
+					<li key={property[0]} className="col-12 text-warning list-unstyled">
+						{property[0]} : {property[1]}
 					</li>
 				);
 			});
@@ -65,40 +62,7 @@ export function DetailsStarship() {
 					<hr className="bg-white" />
 
 					<div className="row d-flex">
-						{
-							// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
-							// Al recargar la página se soluciona ==== */
-							//
-						}
-
-						{/* <ul className=" col-6">
-							{Object.entries(store.detailsStarship.properties)
-								.slice(0, Object.entries(store.detailsStarship.properties).length / 2)
-								.map(property => {
-									return (
-										<li key={Date.now()} className="col-12 text-danger list-unstyled">
-											{property[0]}: {property[1]}
-										</li>
-									);
-								})}
-						</ul> */}
-
 						{splitDetailsFirstPart(store.detailsStarship.properties)}
-
-						{/* <ul className=" col-6">
-							{Object.entries(store.detailsStarship.properties)
-								.slice(
-									Object.entries(store.detailsStarship.properties).length / 2,
-									Object.entries(store.detailsStarship.properties).length
-								)
-								.map(property => {
-									return (
-										<li key={Date.now()} className="col-12 text-danger list-unstyled">
-											{property[0]}: {property[1]}
-										</li>
-									);
-								})}
-						</ul> */}
 
 						{splitDetailsSecondPart(store.detailsStarship.properties)}
 					</div>

@@ -16,36 +16,33 @@ export function DetailsCharacter() {
 		actions.getDetailsPeople(uid);
 	}, []);
 
-	// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
-	// Al recargar la página se soluciona ==== */
-	//
-	// const splitDetailsFirstPart = obj => {
-	// 	let firstPart = Object.entries(obj)
-	// 		.slice(0, Object.entries(obj).length / 2)
-	// 		.map(property => {
-	// 			return (
-	// 				<li key={Date.now()} className="col-12 text-danger list-unstyled">
-	// 					{property[0]}: {property[1]}
-	// 				</li>
-	// 			);
-	// 		});
+	const splitDetailsFirstPart = obj => {
+		let firstPart = Object.entries(obj)
+			.slice(0, Object.entries(obj).length / 2)
+			.map(property => {
+				return (
+					<li key={property[0]} className="col-12 text-warning  list-unstyled">
+						{property[0]} : {property[1]}
+					</li>
+				);
+			});
 
-	// 	return <ul className=" col-6">{firstPart}</ul>;
-	// };
+		return <ul className=" col-6">{firstPart}</ul>;
+	};
 
-	// const splitDetailsSecondPart = obj => {
-	// 	let secondPart = Object.entries(obj)
-	// 		.slice(Object.entries(obj).length / 2, Object.entries(obj).length)
-	// 		.map(property => {
-	// 			return (
-	// 				<li key={Date.now()} className="col-12 text-danger list-unstyled">
-	// 					{property[0]}: {property[1]}
-	// 				</li>
-	// 			);
-	// 		});
+	const splitDetailsSecondPart = obj => {
+		let secondPart = Object.entries(obj)
+			.slice(Object.entries(obj).length / 2, Object.entries(obj).length)
+			.map(property => {
+				return (
+					<li key={property[0]} className="col-12 text-warning list-unstyled">
+						{property[0]} : {property[1]}
+					</li>
+				);
+			});
 
-	// 	return <ul className=" col-6">{secondPart}</ul>;
-	// };
+		return <ul className=" col-6">{secondPart}</ul>;
+	};
 
 	return (
 		<div className="container text-white">
@@ -65,42 +62,9 @@ export function DetailsCharacter() {
 					<hr className="bg-white" />
 
 					<div className="row d-flex">
-						{
-							// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
-							// Al recargar la página se soluciona ==== */
-							//
-						}
+						{splitDetailsFirstPart(store.detailsPeople.properties)}
 
-						<ul className=" col-6">
-							{Object.entries(store.detailsPeople.properties)
-								.slice(0, Object.entries(store.detailsPeople.properties).length / 2)
-								.map(property => {
-									return (
-										<li key={Date.now()} className="col-12 text-danger list-unstyled">
-											{property[0]}: {property[1]}
-										</li>
-									);
-								})}
-						</ul>
-
-						{/* {splitDetailsFirstPart(store.detailsPeople.properties)} */}
-
-						<ul className=" col-6">
-							{Object.entries(store.detailsPeople.properties)
-								.slice(
-									Object.entries(store.detailsPeople.properties).length / 2,
-									Object.entries(store.detailsPeople.properties).length
-								)
-								.map(property => {
-									return (
-										<li key={Date.now()} className="col-12 text-danger list-unstyled">
-											{property[0]}: {property[1]}
-										</li>
-									);
-								})}
-						</ul>
-
-						{/* {splitDetailsSecondPart(store.detailsPeople.properties)} */}
+						{splitDetailsSecondPart(store.detailsPeople.properties)}
 					</div>
 				</div>
 			) : (

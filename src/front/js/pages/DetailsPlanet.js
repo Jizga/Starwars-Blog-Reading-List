@@ -16,16 +16,13 @@ export function DetailsPlanet() {
 		actions.getDetailsPlanet(uid);
 	}, []);
 
-	// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
-	// Al recargar la página se soluciona ==== */
-	//
 	const splitDetailsFirstPart = obj => {
 		let firstPart = Object.entries(obj)
 			.slice(0, Object.entries(obj).length / 2)
 			.map(property => {
 				return (
-					<li key={Date.now()} className="col-12 text-danger list-unstyled">
-						{property[0]}: {property[1]}
+					<li key={property[0]} className="col-12 text-warning list-unstyled">
+						{property[0]} : {property[1]}
 					</li>
 				);
 			});
@@ -38,8 +35,8 @@ export function DetailsPlanet() {
 			.slice(Object.entries(obj).length / 2, Object.entries(obj).length)
 			.map(property => {
 				return (
-					<li key={Date.now()} className="col-12 text-danger list-unstyled">
-						{property[0]}: {property[1]}
+					<li key={property[0]} className="col-12 text-warning list-unstyled">
+						{property[0]} : {property[1]}
 					</li>
 				);
 			});
@@ -64,40 +61,7 @@ export function DetailsPlanet() {
 
 					<hr className="bg-white" />
 					<div className="row d-flex">
-						{
-							// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
-							// Al recargar la página se soluciona ==== */
-							//
-						}
-
-						{/* <ul className=" col-6">
-							{Object.entries(store.detailsPanet.properties)
-								.slice(0, Object.entries(store.detailsPanet.properties).length / 2)
-								.map(property => {
-									return (
-										<li key={Date.now()} className="col-12 text-danger list-unstyled">
-											{property[0]}: {property[1]}
-										</li>
-									);
-								})}
-						</ul> */}
-
 						{splitDetailsFirstPart(store.detailsPanet.properties)}
-
-						{/* <ul className=" col-6">
-							{Object.entries(store.detailsPanet.properties)
-								.slice(
-									Object.entries(store.detailsPanet.properties).length / 2,
-									Object.entries(store.detailsPanet.properties).length
-								)
-								.map(property => {
-									return (
-										<li key={Date.now()} className="col-12 text-danger list-unstyled">
-											{property[0]}: {property[1]}
-										</li>
-									);
-								})}
-						</ul> */}
 
 						{splitDetailsSecondPart(store.detailsPanet.properties)}
 					</div>
