@@ -19,9 +19,9 @@ export const MyNavbar = () => {
 				<img id="logo" src={logo} />
 			</Link>
 
-			<div className="dropdown">
+			<div className="dropdown myDropdown">
 				<button
-					className="btn btn-outline-warning dropdown-toggle myBtn"
+					className="btn btn-outline-warning dropdown-toggle pl-5 pr-5"
 					type="button"
 					id="dropdownMenuButton"
 					data-toggle="dropdown"
@@ -29,26 +29,24 @@ export const MyNavbar = () => {
 					aria-expanded="false">
 					Favourites
 				</button>
-				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<ul className="bg-info">
+				<div className="dropdown-menu myFavourites" aria-labelledby="dropdownMenuButton">
+					<ul className="text-warning">
 						{store.favourites.length > 0 ? (
 							store.favourites.map(item => {
-								<Link
-									key={item.uid}
-									className="dropdown-item bg-danger d-flex justify-content-between"
-									to={item.url}>
-									{/* Si aparece por consola */}
+								return (
+									<li
+										key={item.uid}
+										className="dropdown-item text-warning d-flex justify-content-between align-items-center">
+										<Link to={item.url}>{item.name}</Link>
 
-									{item.name}
-									{console.log("item.name en Navbar -- ", item.name)}
-
-									<i
-										className="far fa-trash-alt"
-										//Función preprada para cuando aparezcan los elementos en el navbar -.-
-										//
-										// onClick={actions.deleteFavourite(item.url, store.favourites)}
-									/>
-								</Link>;
+										<i
+											className="far fa-trash-alt"
+											//Función preprada para cuando aparezcan los elementos en el navbar -.-
+											//
+											// onClick={actions.deleteFavourite(item.url, store.favourites)}
+										/>
+									</li>
+								);
 							})
 						) : (
 							<p className="pl-3">You do not have any favourite</p>

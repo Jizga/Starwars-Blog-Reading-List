@@ -191,8 +191,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
-			//Función preprada para cuando aparezcan los elementos en el navbar -.-
-
 			deleteFavourite: (itemUrl, favouritesArr) => {
 				let newList = favouritesArr.filter(selectedItem => {
 					if (selectedItem.url !== itemUrl) {
