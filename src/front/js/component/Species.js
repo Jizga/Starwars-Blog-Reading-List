@@ -24,9 +24,13 @@ export function Species() {
 							name={specie.name}
 							url={specie.url}
 							favorite={specie.favorite}
-							addFavourite={addFavourite}
+							//Para ir al perfil del elemento seleccionado
 							showDetails={actions.getDetailsSpecie}
 							category="/species/"
+							//Para añadir a favoritos
+							addFavourite={actions.addFavourite}
+							data={store.dataSpecies}
+							favouritesArr={store.favourites}
 						/>
 					</div>
 				);

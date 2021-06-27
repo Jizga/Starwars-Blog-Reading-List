@@ -5,7 +5,6 @@ import logo from "../../img/sw-white.png";
 import "../../styles/myNavbar.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { FavouritesList } from "./FavouritesList";
 import { Context } from "../store/appContext";
 
 export const MyNavbar = () => {
@@ -25,18 +24,26 @@ export const MyNavbar = () => {
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
-					Dropdown button
+					Favourites
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a className="dropdown-item" href="#">
-						Action
-					</a>
-					<a className="dropdown-item" href="#">
-						Another action
-					</a>
-					<a className="dropdown-item" href="#">
-						Something else here
-					</a>
+					{store.favourites.length > 0 ? (
+						store.favourites.map(item => {
+							// <Link key={item.uid} className="dropdown-item" to="/">
+							// 	<p>
+							// 		{item.name}
+							// 		{console.log("item.name en Navbar -- ", item.name)}
+							// 	</p>
+							// </Link>;
+
+							<p key={item.uid}>
+								{item.name}
+								{console.log("item.name en Navbar -- ", item.name)}
+							</p>;
+						})
+					) : (
+						<p className="pl-3">You do not have any favourite</p>
+					)}
 				</div>
 			</div>
 		</nav>

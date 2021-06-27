@@ -8,12 +8,6 @@ import "../../styles/Characters.scss";
 export function Characters() {
 	const { store, actions } = useContext(Context);
 
-	const addFavourite = characterId => {
-		store.dataPeople.map(
-			character => (character.uid === characterId ? (character.favorite = true) : character.favorite)
-		);
-	};
-
 	return (
 		<>
 			{store.dataPeople.map(character => {
@@ -24,9 +18,13 @@ export function Characters() {
 							name={character.name}
 							url={character.url}
 							favorite={character.favorite}
-							addFavourite={addFavourite}
+							//Para ir al perfil del elemento seleccionado
 							showDetails={actions.getDetailsPeople}
 							category="/people/"
+							//Para añadir a favoritos
+							addFavourite={actions.addFavourite}
+							data={store.dataPeople}
+							favouritesArr={store.favourites}
 						/>
 					</div>
 				);

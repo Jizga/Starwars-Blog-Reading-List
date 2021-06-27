@@ -22,9 +22,13 @@ export function Planets() {
 							name={planet.name}
 							url={planet.url}
 							favorite={planet.favorite}
-							addFavourite={addFavourite}
+							//Para ir al perfil del elemento seleccionado
 							showDetails={actions.getDetailsPlanet}
 							category="/planets/"
+							//Para añadir a favoritos
+							addFavourite={actions.addFavourite}
+							data={store.dataPlanets}
+							favouritesArr={store.favourites}
 						/>
 					</div>
 				);

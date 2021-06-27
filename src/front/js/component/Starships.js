@@ -24,9 +24,13 @@ export function Starships() {
 							name={starship.name}
 							url={starship.url}
 							favorite={starship.favorite}
-							addFavourite={addFavourite}
+							//Para ir al perfil del elemento seleccionado
 							showDetails={actions.getDetailsStarship}
 							category="/starships/"
+							//Para añadir a favoritos
+							addFavourite={actions.addFavourite}
+							data={store.dataStarships}
+							favouritesArr={store.favourites}
 						/>
 					</div>
 				);

@@ -169,6 +169,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (e) {
 					console.error(`error from database -- ${e}`);
 				}
+			},
+
+			//Para poder añadir a la lista de favoritos todas las categorías
+			//no es posible usar el id, pq el id se repite en distintas categorías
+
+			addFavourite: (dataArr, itemUrl, favouritesArr) => {
+				dataArr.map(item => {
+					if (item.url === itemUrl) {
+						if (favouritesArr.length === 0) {
+							item.favorite = true;
+							setStore({ favourites: [...favouritesArr, item] });
+						} else {
+							//NO REPETIR ELEMENTO EN FAVORITOS
+							if (!favouritesArr.some(item => item.url === itemUrl)) {
+								item.favorite = true;
+								setStore({ favourites: [...favouritesArr, item] });
+							}
+						}
+					}
+				});
 			}
 		}
 	};

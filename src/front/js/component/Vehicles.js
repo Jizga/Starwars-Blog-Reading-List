@@ -24,9 +24,13 @@ export function Vehicles() {
 							name={vehicle.name}
 							url={vehicle.url}
 							favorite={vehicle.favorite}
-							addFavourite={addFavourite}
+							//Para ir al perfil del elemento seleccionado
 							showDetails={actions.getDetailsVehicle}
 							category="/vehicles/"
+							//Para añadir a favoritos
+							addFavourite={actions.addFavourite}
+							data={store.dataVehicles}
+							favouritesArr={store.favourites}
 						/>
 					</div>
 				);
