@@ -10,7 +10,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			detailsPanet: {},
 			detailsSpecie: {},
 			detailsStarship: {},
-			detailsVehicle: {}
+			detailsVehicle: {},
+			favourites: []
 		},
 		actions: {
 			getDataPeople: async () => {
