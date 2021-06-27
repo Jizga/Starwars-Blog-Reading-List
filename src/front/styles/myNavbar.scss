@@ -23,8 +23,21 @@
   
 }
 
+
 ul, li{
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+li:hover, li::selection{
+    background-color: rgba(3, 3, 3, 0.651) !important;
+}
+
+.fa-trash-alt{
+    cursor: pointer;
+}
+
+.fa-trash-alt:hover, .fa-trash-alt::selection{
+    color: red;
 }

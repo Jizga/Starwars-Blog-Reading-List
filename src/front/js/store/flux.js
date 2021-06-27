@@ -192,15 +192,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			deleteFavourite: (itemUrl, favouritesArr) => {
-				let newList = favouritesArr.filter(selectedItem => {
-					if (selectedItem.url !== itemUrl) {
-						selectedItem.favorite = false;
+				favouritesArr.map((item, index) => {
+					if (item.url === itemUrl) {
+						item.favorite = false;
+
+						favouritesArr.splice(index, 1);
+
+						setStore({ favourites: [...favouritesArr] });
 					}
 				});
-
-				setStore({ favourites: newList });
-
-				console.log("Nueva lista ", newList);
 			}
 		}
 	};

@@ -11,8 +11,6 @@ import { Context } from "../store/appContext";
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 
-	// console.log("Lista de favoritos en Navbar : ", store.favourites);
-
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between" id="myNav">
 			<Link to="/">
@@ -35,15 +33,17 @@ export const MyNavbar = () => {
 							store.favourites.map(item => {
 								return (
 									<li
-										key={item.uid}
+										key={item.url}
 										className="dropdown-item text-warning d-flex justify-content-between align-items-center">
 										<Link to={item.url}>{item.name}</Link>
 
 										<i
 											className="far fa-trash-alt"
-											//Función preprada para cuando aparezcan los elementos en el navbar -.-
+											//Se rompe la app cuando se intenta borrar o añadir un elemento a la lista
+											// Es pq el "favourites" se ha modificado cuando se añade y cunado se borra
+											// pero...pq??????
 											//
-											// onClick={actions.deleteFavourite(item.url, store.favourites)}
+											onClick={() => actions.deleteFavourite(item.url, store.favourites)}
 										/>
 									</li>
 								);
