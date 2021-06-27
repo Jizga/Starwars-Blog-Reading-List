@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
-import { Context } from "../store/appContext";
 
 import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
-	const { store, actions } = useContext(Context);
-
 	return (
 		<div className="card myCard">
 			<img className="card-img-top" src={StarWars} alt={props.name} />

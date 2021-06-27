@@ -8,12 +8,6 @@ import "../../styles/Characters.scss";
 export function Vehicles() {
 	const { store, actions } = useContext(Context);
 
-	const addFavourite = vehicleId => {
-		store.dataVehicles.map(
-			vehicle => (vehicle.uid === vehicleId ? (vehicle.favorite = true) : (vehicle.favorite = false))
-		);
-	};
-
 	return (
 		<>
 			{store.dataVehicles.map(vehicle => {

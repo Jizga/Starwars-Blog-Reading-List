@@ -8,12 +8,6 @@ import "../../styles/Characters.scss";
 export function Starships() {
 	const { store, actions } = useContext(Context);
 
-	const addFavourite = starshipId => {
-		store.dataStarships.map(
-			starship => (starship.uid === starshipId ? (starship.favorite = true) : (starship.favorite = false))
-		);
-	};
-
 	return (
 		<>
 			{store.dataStarships.map(starship => {

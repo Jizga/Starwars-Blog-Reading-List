@@ -8,12 +8,6 @@ import "../../styles/Characters.scss";
 export function Species() {
 	const { store, actions } = useContext(Context);
 
-	const addFavourite = specieId => {
-		store.dataSpecies.map(
-			specie => (specie.uid === specieId ? (specie.favorite = true) : (specie.favorite = false))
-		);
-	};
-
 	return (
 		<>
 			{store.dataSpecies.map(specie => {

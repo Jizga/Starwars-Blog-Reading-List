@@ -8,10 +8,6 @@ import "../../styles/Characters.scss";
 export function Planets() {
 	const { store, actions } = useContext(Context);
 
-	const addFavourite = planetId => {
-		store.dataPlanets.map(planet => (planet.uid === planetId ? (planet.favorite = true) : planet.favorite));
-	};
-
 	return (
 		<>
 			{store.dataPlanets.map(planet => {
