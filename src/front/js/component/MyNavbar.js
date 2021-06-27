@@ -30,10 +30,15 @@ export const MyNavbar = () => {
 					Favourites
 				</button>
 				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<ul>
+					<ul className="bg-info">
 						{store.favourites.length > 0 ? (
 							store.favourites.map(item => {
-								<li key={item.uid} className="bg-danger d-flex justify-content-between">
+								<Link
+									key={item.uid}
+									className="dropdown-item bg-danger d-flex justify-content-between"
+									to={item.url}>
+									{/* Si aparece por consola */}
+
 									{item.name}
 									{console.log("item.name en Navbar -- ", item.name)}
 
@@ -43,7 +48,7 @@ export const MyNavbar = () => {
 										//
 										// onClick={actions.deleteFavourite(item.url, store.favourites)}
 									/>
-								</li>;
+								</Link>;
 							})
 						) : (
 							<p className="pl-3">You do not have any favourite</p>
