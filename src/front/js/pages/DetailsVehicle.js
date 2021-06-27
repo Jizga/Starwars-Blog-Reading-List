@@ -16,10 +16,41 @@ export function DetailsVehicle() {
 		actions.getDetailsVehicle(uid);
 	}, []);
 
+	// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
+	// Al recargar la página se soluciona ==== */
+	//
+	const splitDetailsFirstPart = obj => {
+		let firstPart = Object.entries(obj)
+			.slice(0, Object.entries(obj).length / 2)
+			.map(property => {
+				return (
+					<li key={Date.now()} className="col-12 text-danger list-unstyled">
+						{property[0]}: {property[1]}
+					</li>
+				);
+			});
+
+		return <ul className=" col-6">{firstPart}</ul>;
+	};
+
+	const splitDetailsSecondPart = obj => {
+		let secondPart = Object.entries(obj)
+			.slice(Object.entries(obj).length / 2, Object.entries(obj).length)
+			.map(property => {
+				return (
+					<li key={Date.now()} className="col-12 text-danger list-unstyled">
+						{property[0]}: {property[1]}
+					</li>
+				);
+			});
+
+		return <ul className=" col-6">{secondPart}</ul>;
+	};
+
 	return (
-		<div className="container text-white myBox">
+		<div className="container text-white">
 			{store.detailsVehicle.properties ? (
-				<div>
+				<div className="myBox">
 					<div className="row">
 						<div className="col-4">
 							<img src={miniAT} id="imgvehicle" />
@@ -32,12 +63,44 @@ export function DetailsVehicle() {
 					</div>
 
 					<hr className="bg-white" />
-					<div className="row">
-						<p>Detalles del personaje</p>
-						{Object.entries(store.detailsVehicle.properties).map(
-							// Drale formato
-							property => `${property[0]}: ${property[1]}`
-						)}
+
+					<div className="row d-flex">
+						{
+							// //* ==== Se repiten los detalles al ratito de estar en la página. Es como si se llamaran los detallas cada x segundos desde la API.
+							// Al recargar la página se soluciona ==== */
+							//
+						}
+
+						{/* <ul className=" col-6">
+							{Object.entries(store.detailsVehicle.properties)
+								.slice(0, Object.entries(store.detailsVehicle.properties).length / 2)
+								.map(property => {
+									return (
+										<li key={Date.now()} className="col-12 text-danger list-unstyled">
+											{property[0]}: {property[1]}
+										</li>
+									);
+								})}
+						</ul> */}
+
+						{splitDetailsFirstPart(store.detailsVehicle.properties)}
+
+						{/* <ul className=" col-6">
+							{Object.entries(store.detailsVehicle.properties)
+								.slice(
+									Object.entries(store.detailsVehicle.properties).length / 2,
+									Object.entries(store.detailsVehicle.properties).length
+								)
+								.map(property => {
+									return (
+										<li key={Date.now()} className="col-12 text-danger list-unstyled">
+											{property[0]}: {property[1]}
+										</li>
+									);
+								})}
+						</ul> */}
+
+						{splitDetailsSecondPart(store.detailsVehicle.properties)}
 					</div>
 				</div>
 			) : (
