@@ -47,7 +47,8 @@ export const MyNavbar = () => {
 								return (
 									<li
 										key={item.url}
-										className="dropdown-item text-warning d-flex justify-content-between align-items-center">
+										className="dropdown-item text-warning d-flex justify-content-between align-items-center"
+										id="myLiList">
 										<Link to={`/${category}/${element}`}>{item.name}</Link>
 
 										<i

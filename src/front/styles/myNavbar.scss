@@ -30,7 +30,7 @@ ul, li{
     padding: 0;
 }
 
-li:hover, li::selection{
+#myLiList:hover, #myLiList::selection{
     background-color: rgba(3, 3, 3, 0.651) !important;
 }
 
