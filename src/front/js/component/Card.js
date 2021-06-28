@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
+import { Context } from "../store/appContext";
 
 import StarWars from "../../img/StarWars.png";
 import "../../styles/card.scss";
 
 export function Card(props) {
+	const { store, actions } = useContext(Context);
+
+	useEffect(
+		() => {
+			// `JSON.stringify` para convertir un objeto en cadena con formato JSON.
+			localStorage.setItem("store.favourites", JSON.stringify(store.favourites));
+		},
+		[store.favourites]
+	);
+
 	return (
 		<div className="card myCard">
 			<img className="card-img-top" src={StarWars} alt={props.name} />

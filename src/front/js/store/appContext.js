@@ -27,7 +27,17 @@ const injectContext = PassedComponent => {
 			state.actions.getDataSpecies();
 			state.actions.getDataStarships();
 			state.actions.getDataVehicles();
+
+			JSON.parse(localStorage.getItem("store.favourites"));
 		}, []);
+
+		// useEffect(
+		// 	() => {
+		// 		// `JSON.stringify` para convertir un objeto en cadena con formato JSON.
+		// 		localStorage.setItem("favourites", JSON.stringify(favourites));
+		// 	},
+		// 	[favourites]
+		// );
 
 		// The initial value for the context is not null anymore, but the current state of this component,
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared
