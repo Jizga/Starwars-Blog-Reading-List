@@ -8,6 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Context } from "../store/appContext";
 
+let urlArr;
+let category;
+let element;
+
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
 
@@ -31,11 +35,20 @@ export const MyNavbar = () => {
 					<ul className="text-warning">
 						{store.favourites.length > 0 ? (
 							store.favourites.map(item => {
+								//Para poder usar correctamente los Links, ya que mis perfiles del elemento seleccionado
+								//van con categoría y id, no directamente con la url de la Api..
+
+								urlArr = item.url.split("/");
+
+								category = urlArr[urlArr.length - 2];
+
+								element = urlArr[urlArr.length - 1];
+
 								return (
 									<li
 										key={item.url}
 										className="dropdown-item text-warning d-flex justify-content-between align-items-center">
-										<Link to={item.url}>{item.name}</Link>
+										<Link to={`/${category}/${element}`}>{item.name}</Link>
 
 										<i
 											className="far fa-trash-alt"
