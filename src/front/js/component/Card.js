@@ -13,7 +13,10 @@ export function Card(props) {
 	useEffect(
 		() => {
 			// `JSON.stringify` para convertir un objeto en cadena con formato JSON.
-			localStorage.setItem("store.favourites", JSON.stringify(store.favourites));
+			//Con esta condición se hacen los borrados del local storage, asi que no hace falta implementar el borrado ene l botón de borrar del Flux
+			if (store.favourites.length > 0) {
+				localStorage.setItem("store.favourites", JSON.stringify(store.favourites));
+			}
 		},
 		[store.favourites]
 	);

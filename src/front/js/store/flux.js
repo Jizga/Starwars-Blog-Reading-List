@@ -191,6 +191,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			//Para poder recoger los datos guardados en el local storage al recargar la página
+			getFavourites: () => {
+				setStore({ favourites: JSON.parse(localStorage.getItem("store.favourites")) });
+			},
+
 			deleteFavourite: (itemUrl, favouritesArr) => {
 				favouritesArr.map((item, index) => {
 					if (item.url === itemUrl) {
