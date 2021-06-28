@@ -61,7 +61,7 @@ export function DetailsStarship() {
 
 					<hr className="bg-white" />
 
-					<div className="row d-flex">
+					<div className="row d-flex justify-content-center justify-content-md-start no-gutters">
 						{splitDetailsFirstPart(store.detailsStarship.properties)}
 
 						{splitDetailsSecondPart(store.detailsStarship.properties)}

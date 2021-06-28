@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../img/sw-white.png";
@@ -8,12 +8,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Context } from "../store/appContext";
 
-let urlArr;
-let category;
-let element;
-
 export const MyNavbar = () => {
 	const { store, actions } = useContext(Context);
+
+	let urlArr;
+	let category;
+	let element;
+
+	// useEffect(
+	// 	() => {
+	// 		window.localStorage.getItem(store.favourites) !== null
+	// 			? JSON.parse(window.localStorage.getItem(store.favourites))
+	// 			: store.favourites;
+	// 	},
+	// 	[store.favourites]
+	// );
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between" id="myNav">

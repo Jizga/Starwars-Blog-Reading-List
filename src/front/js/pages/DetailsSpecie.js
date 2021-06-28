@@ -60,7 +60,7 @@ export function DetailsSpecie() {
 					</div>
 
 					<hr className="bg-white" />
-					<div className="row d-flex">
+					<div className="row d-flex justify-content-center justify-content-md-start no-gutters">
 						{splitDetailsFirstPart(store.detailsSpecie.properties)}
 
 						{splitDetailsSecondPart(store.detailsSpecie.properties)}
