@@ -42,7 +42,7 @@ export const MyNavbar = () => {
 				</button>
 				<div className="dropdown-menu myFavourites" aria-labelledby="dropdownMenuButton">
 					<ul className="text-warning">
-						{store.favourites.length > 0 ? (
+						{store.favourites && store.favourites.length > 0 ? (
 							store.favourites.map(item => {
 								//Para poder usar correctamente los Links, ya que mis perfiles del elemento seleccionado
 								//van con categoría y id, no directamente con la url de la Api..

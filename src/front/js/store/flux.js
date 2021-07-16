@@ -176,7 +176,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			addFavourite: (dataArr, itemUrl, favouritesArr) => {
 				dataArr.map(item => {
-					if (item.url === itemUrl) {
+					if (favouritesArr && item.url === itemUrl) {
 						if (favouritesArr.length === 0) {
 							item.favorite = true;
 							setStore({ favourites: [...favouritesArr, item] });
@@ -193,16 +193,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Para poder recoger los datos guardados en el local storage al recargar la página
 			getFavourites: () => {
-				setStore({ favourites: JSON.parse(localStorage.getItem("store.favourites")) });
+				let initFavo = JSON.parse(localStorage.getItem("store.favourites"));
+				// Al iniciar la página "favourites" está vacío, por lo que al no encontrarlo
+				//lo transforma en null, para evitar eso es necesario este if
+				if (initFavo) {
+					setStore({ favourites: initFavo });
+				}
 			},
 
 			deleteFavourite: (itemUrl, favouritesArr) => {
 				favouritesArr.map((item, index) => {
 					if (item.url === itemUrl) {
 						item.favorite = false;
-
 						favouritesArr.splice(index, 1);
-
 						setStore({ favourites: [...favouritesArr] });
 					}
 				});
